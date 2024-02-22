@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Card from "../components/Card";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Game = () => {
   // Define the card names
@@ -90,6 +92,16 @@ const Game = () => {
 
   // if exploded bomb card is drawn display you lost
   if (message === "You drew an exploding kitten card! You lost!") {
+    // Update points in the backend
+    axios
+      .post("http://localhost:8080/updatepoints", { username: "xyz" })
+      .then((response) => {
+        console.log(response);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error updating points:", error);
+      });
     return (
       <div className="h-screen flex items-center justify-center">
         <h1 className="text-4xl">You lost!</h1>
@@ -110,9 +122,11 @@ const Game = () => {
       <div className="flex justify-between py-9 px-12">
         <h1 className="text-4xl">Exploding Kittens</h1>
         <h2 className="text-2xl">Defuse count: {defuseCount}</h2>
-        <button className="text-2xl bg-orange-400 text-white px-3 py-2 rounded-lg">
-          View Leaderboard
-        </button>
+        <Link to="/leaderboard">
+          <button className="text-2xl bg-orange-400 text-white px-3 py-2 rounded-lg">
+            View Leaderboard
+          </button>
+        </Link>
       </div>
       <div className="my-9">
         <h1 className="text-center text-2xl">{message}</h1>
