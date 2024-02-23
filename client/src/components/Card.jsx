@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cardsBG from "../assets/card.webp";
-import catIMG from "../assets/cat.png";
-import defuseIMG from "../assets/defuse.webp";
-import shuffleIMG from "../assets/shuffle.png";
-import bombIMG from "../assets/bomb.png";
+import catIMG from "../assets/cat.avif";
+import defuseIMG from "../assets/defuse.avif";
+import shuffleIMG from "../assets/shuffle.jpeg";
+import bombIMG from "../assets/bomb.jpg";
 import ReactCardFlip from "react-card-flip";
 
 const Card = ({ name, drawCard }) => {
@@ -14,7 +14,7 @@ const Card = ({ name, drawCard }) => {
     setTimeout(() => {
       drawCard(name);
       setIsFlipped(false);
-    }, 1000);
+    }, 2000);
   };
 
   const cardImages = {
@@ -25,14 +25,24 @@ const Card = ({ name, drawCard }) => {
   };
 
   return (
-    <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-      <div className="card" onClick={handleClick}>
-        <img src={cardsBG} alt="card" />
-      </div>
-      <div onClick={handleClick}>
-        <img src={cardImages[name]} alt={name} />
-      </div>
-    </ReactCardFlip>
+    <>
+      <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+        <div className="card h-96" onClick={handleClick}>
+          <img
+            src={cardsBG}
+            alt="card"
+            className="h-full w-full object-cover rounded-xl"
+          />
+        </div>
+        <div className="card h-96" onClick={handleClick}>
+          <img
+            src={cardImages[name]}
+            alt={name}
+            className="h-full w-full object-cover rounded-xl"
+          />
+        </div>
+      </ReactCardFlip>
+    </>
   );
 };
 
