@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import badgeIcon from "../assets/badge.png";
 import { Link, useParams } from "react-router-dom";
-import Confetti from "react-confetti";
 
 const Leaderboard = () => {
   // Define the state variables
@@ -58,7 +57,7 @@ const Leaderboard = () => {
       {userData && (
         <div className="mt-5 text-center text-lg md:text-2xl text-white font-bold">
           <p>Hey👋, {userData.username}!</p>
-          <p className="md:mt-2">Your Current Score is {userData.points / 2}</p>
+          <p className="md:mt-2">Your Current Score is {userData.points}</p>
         </div>
       )}
       <div>
@@ -105,7 +104,7 @@ const Leaderboard = () => {
                           {player.username}
                         </td>
                         <td className="whitespace-nowrap px-6 py-4">
-                          {player.points / 2}
+                          {player.points}
                         </td>
                       </tr>
                     ))}
@@ -122,7 +121,6 @@ const Leaderboard = () => {
             </button>
           </Link>
         </div>
-        <Confetti width={window.innerWidth} height={window.innerHeight} />
       </div>
     </div>
   );

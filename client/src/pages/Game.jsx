@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "../components/Card";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import GameWin from "./GameWin";
+import GameOver from "./GameOver";
 
 const Game = () => {
   // Define the card names
@@ -97,6 +98,11 @@ const Game = () => {
     }
     setSelectedCardNames(updatedSelectedCardNames);
   };
+
+  // if the user has no defuse cards left display game over
+  if (message === "Oops ❌ You picked an Exploding Kitten Card. You lost 🤯!") {
+    return <GameOver username={username} />;
+  }
 
   // if all the cards are removed display you win
   if (
