@@ -12,10 +12,13 @@ const Game = () => {
     "Exploding kitten card 💣",
   ];
 
+  // Get the username from the URL
   let { username } = useParams();
 
+  // Use the navigate hook
   const navigate = useNavigate();
 
+  // Define the state variables
   const [drawnCards, setDrawnCards] = useState([]);
   const [defuseCount, setDefuseCount] = useState(0);
   const [message, setMessage] = useState("");
@@ -105,23 +108,23 @@ const Game = () => {
 
   return (
     <div className="bg-[#151a30] min-h-screen">
-      <div className="flex justify-between py-9 px-12">
-        <h2 className="text-2xl text-white font-bold">
+      <div className="text-center px-5 py-9 md:flex md:justify-between md:py-9 md:px-12">
+        <h2 className="text-xl md:text-2xl text-white font-bold">
           Defuse Power : {defuseCount}
         </h2>
-        <h2 className="text-2xl text-white font-bold">
+        <h2 className="text-xl mt-5 md:mt-0 md:text-2xl text-white font-bold">
           Choose your cards wisely to win the game!
         </h2>
         <Link to={`/leaderboard/${username}`}>
-          <button className="text-xl bg-orange-400 text-white font-bold px-4 py-2 rounded-lg hover:opacity-70">
+          <button className="text-lg px-3 py-2 mt-7 md:mt-0 md:text-xl bg-orange-400 text-white font-bold md:px-4 md:py-2 rounded-lg hover:opacity-70">
             View Your Leaderboard
           </button>
         </Link>
       </div>
-      <h1 className="text-center text-2xl text-white font-bold mb-16 mt-9">
+      <h1 className="text-center text-lg md:text-2xl text-white font-bold mb-9 md:px-0 px-5 md:mb-16 md:mt-9">
         {message}
       </h1>
-      <div className="grid grid-cols-5 gap-4 px-20">
+      <div className="grid px-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:px-16 md:pb-0 pb-16">
         {selectedCardNames.map((name, index) => (
           <Card key={index} name={name} drawCard={drawCard} />
         ))}
