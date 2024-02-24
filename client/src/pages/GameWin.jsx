@@ -5,7 +5,7 @@ import axios from "axios";
 
 const GameWin = ({ username }) => {
   // Update the user's points on winning the game
-  axios.post("http://localhost:8080/updatepoints", { username: username });
+  axios.post("https://exploding-kitten-gfhh.onrender.com/updatepoints", { username: username });
 
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-[#151a30]">

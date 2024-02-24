@@ -15,7 +15,7 @@ const Leaderboard = () => {
   // Fetch user leaderboard data
   useEffect(() => {
     axios
-      .get("http://localhost:8080/leaderboard", {
+      .get("https://exploding-kitten-gfhh.onrender.com/leaderboard", {
         params: {
           username: username,
         },
@@ -29,7 +29,7 @@ const Leaderboard = () => {
 
     // Fetch top 3 users data
     axios
-      .get("http://localhost:8080/top3")
+      .get("https://exploding-kitten-gfhh.onrender.com/top3")
       .then((response) => {
         setTop3Users(response.data);
       })

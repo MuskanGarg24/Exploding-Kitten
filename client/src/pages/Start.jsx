@@ -14,7 +14,7 @@ const Start = () => {
   const handleStartGameClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/user", {
+      await axios.post("https://exploding-kitten-gfhh.onrender.com/user", {
         username,
       });
       navigate(`/game/${username}`);
