@@ -1,4 +1,4 @@
-module github.com/MuskanGarg24/game
+module github.com/MuskanGarg24/Exploding-Kitten
 
 go 1.22.0
 
